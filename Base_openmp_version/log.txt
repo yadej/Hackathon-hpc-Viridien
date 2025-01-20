@@ -1,41 +1,63 @@
 Computing with openmp on the black_sholes function
+gcc compiler
 Run 1
-Global initial seed: 2369955139      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 19.0590975
-Performance in seconds : 0.0797
+Global initial seed: 1616782439      argv[1]= 1000     argv[2]= 1000
+ value= 5.226849 in 0.060559 seconds
 Run 2
-Global initial seed: 1055360442      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 18.9005796
-Performance in seconds : 0.0688
+Global initial seed: 19532964      argv[1]= 1000     argv[2]= 1000
+ value= 5.185096 in 0.054987 seconds
 Run 3
-Global initial seed: 333039887      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 18.4720069
-Performance in seconds : 0.0728
+Global initial seed: 2343557392      argv[1]= 1000     argv[2]= 1000
+ value= 5.221494 in 0.038660 seconds
 Run 4
-Global initial seed: 1199945187      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 19.1769454
-Performance in seconds : 0.0742
+Global initial seed: 2482979291      argv[1]= 1000     argv[2]= 1000
+ value= 5.175561 in 0.038298 seconds
 Run 5
-Global initial seed: 1602389209      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 19.2030463
-Performance in seconds : 0.0789
+Global initial seed: 3945270289      argv[1]= 1000     argv[2]= 1000
+ value= 5.177211 in 0.040671 seconds
 Run 6
-Global initial seed: 1379492777      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 18.3358134
-Performance in seconds : 0.0838
+Global initial seed: 1339903815      argv[1]= 1000     argv[2]= 1000
+ value= 5.198475 in 0.042222 seconds
 Run 7
-Global initial seed: 1647057783      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 19.2059876
-Performance in seconds : 0.0763
+Global initial seed: 2876162720      argv[1]= 1000     argv[2]= 1000
+ value= 5.168593 in 0.039762 seconds
 Run 8
-Global initial seed: 3093050370      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 18.4469981
-Performance in seconds : 0.0765
+Global initial seed: 1294039274      argv[1]= 1000     argv[2]= 1000
+ value= 5.193712 in 0.043663 seconds
 Run 9
-Global initial seed: 2551052778      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 18.4067635
-Performance in seconds : 0.0833
+Global initial seed: 4037279144      argv[1]= 1000     argv[2]= 1000
+ value= 5.168855 in 0.038064 seconds
 Run 10
-Global initial seed: 1638566904      argv[1]= 1000     argv[2]= 1000
-%Average Relative Error: 19.6909618
-Performance in seconds : 0.0763
+Global initial seed: 3849799698      argv[1]= 1000     argv[2]= 1000
+ value= 5.156958 in 0.039360 seconds
+Arm compiler
+Run 1
+Global initial seed: 3185547065      argv[1]= 1000     argv[2]= 1000
+ value= 5.176894 in 0.025352 seconds
+Run 2
+Global initial seed: 3012222103      argv[1]= 1000     argv[2]= 1000
+ value= 5.143228 in 0.023848 seconds
+Run 3
+Global initial seed: 157627651      argv[1]= 1000     argv[2]= 1000
+ value= 5.108384 in 0.026461 seconds
+Run 4
+Global initial seed: 1612830252      argv[1]= 1000     argv[2]= 1000
+ value= 5.140349 in 0.024715 seconds
+Run 5
+Global initial seed: 2531350411      argv[1]= 1000     argv[2]= 1000
+ value= 5.192046 in 0.028158 seconds
+Run 6
+Global initial seed: 2408832957      argv[1]= 1000     argv[2]= 1000
+ value= 5.172704 in 0.025132 seconds
+Run 7
+Global initial seed: 4196022640      argv[1]= 1000     argv[2]= 1000
+ value= 5.116540 in 0.022935 seconds
+Run 8
+Global initial seed: 2204904721      argv[1]= 1000     argv[2]= 1000
+ value= 5.162440 in 0.023458 seconds
+Run 9
+Global initial seed: 914356075      argv[1]= 1000     argv[2]= 1000
+ value= 5.130465 in 0.027589 seconds
+Run 10
+Global initial seed: 502067117      argv[1]= 1000     argv[2]= 1000
+ value= 5.136810 in 0.027162 seconds

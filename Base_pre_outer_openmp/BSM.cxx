@@ -55,7 +55,7 @@
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
-#include <omp.h> // For parallelization
+#include <omp.h>
 
 #define ui64 u_int64_t
 
@@ -78,15 +78,18 @@ double gaussian_box_muller() {
 
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
 double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
+    // Precompute constants
+    double drift = (r - q - 0.5 * sigma * sigma) * T;
+    double diffusion = sigma * sqrt(T);
+    double discount_factor = exp(-r * T);
     double sum_payoffs = 0.0;
-#pragma omp parallel for reduction(+:sum_payoffs)
     for (ui64 i = 0; i < num_simulations; ++i) {
         double Z = gaussian_box_muller();
-        double ST = S0 * exp((r - q - 0.5 * sigma * sigma) * T + sigma * sqrt(T) * Z);
+        double ST = S0 * exp( drift + diffusion * Z);
         double payoff = std::max(ST - K, 0.0);
         sum_payoffs += payoff;
     }
-    return exp(-r * T) * (sum_payoffs / num_simulations);
+    return discount_factor * (sum_payoffs / num_simulations);
 }
 
 #include <cmath> // Pour std::erf et std::sqrt
@@ -115,6 +118,7 @@ int main(int argc, char* argv[]) {
 
     double sum=0.0;
     double t1=dml_micros();
+#pragma omp parallel for reduction(+:sum)
     for (ui64 run = 0; run < num_runs; ++run) {
         sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }

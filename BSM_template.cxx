@@ -87,6 +87,7 @@ double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sig
     return exp(-r * T) * (sum_payoffs / num_simulations);
 }
 
+#include <cmath> // Pour std::erf et std::sqrt
 int main(int argc, char* argv[]) {
     if (argc != 3) {
         std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
@@ -110,33 +111,12 @@ int main(int argc, char* argv[]) {
 
     std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
 
-    std::vector<double> errors;
+    double sum=0.0;
     double t1=dml_micros();
     for (ui64 run = 0; run < num_runs; ++run) {
-        double theoretical_price = black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
-        double actual_price = black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
-        double relative_error = std::abs(theoretical_price - actual_price) / actual_price;
-        errors.push_back(relative_error);
-
-        // Print the values on one line with precision
-        /*
-        std::cout << std::fixed << std::setprecision(6)
-                  << "Run " << run + 1 << ": "
-                  << "Theoretical Price: " << theoretical_price << ", "
-                  << "Actual Price: " << actual_price << ", "
-                  << "Difference: " << theoretical_price - actual_price << std::endl; 
-        */
+        sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }
     double t2=dml_micros();
-
-    double min_error     = *std::min_element(errors.begin(), errors.end());
-    double max_error     = *std::max_element(errors.begin(), errors.end());
-    double average_error =  std::accumulate (errors.begin(), errors.end(), 0.0) / errors.size();
-
-    //std::cout << "%Best    Relative Error: " << min_error     * 100 << std::endl;
-    //std::cout << "%Worst   Relative Error: " << max_error     * 100 << std::endl;
-    std::cout << "%Average Relative Error: " << std::setprecision(9) << average_error * 100 << std::endl;
-    std::cout << "Performance in seconds : " << std::setprecision(3) << (t2-t1)/1000000.0   << std::endl;
-
+    std::cout << std::fixed << std::setprecision(6) << " value= " << sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
     return 0;
 }
