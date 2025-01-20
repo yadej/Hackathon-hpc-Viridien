@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
 
     double sum=0.0;
     double t1=dml_micros();
-#pragma omp parallel for reduction(+:sum)
+#pragma omp parallel for simd reduction(+:sum)
     for (ui64 run = 0; run < num_runs; ++run) {
         sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }
