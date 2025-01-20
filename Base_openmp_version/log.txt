@@ -1,0 +1,41 @@
+Computing with openmp on the black_sholes function
+Run 1
+Global initial seed: 2369955139      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 19.0590975
+Performance in seconds : 0.0797
+Run 2
+Global initial seed: 1055360442      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 18.9005796
+Performance in seconds : 0.0688
+Run 3
+Global initial seed: 333039887      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 18.4720069
+Performance in seconds : 0.0728
+Run 4
+Global initial seed: 1199945187      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 19.1769454
+Performance in seconds : 0.0742
+Run 5
+Global initial seed: 1602389209      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 19.2030463
+Performance in seconds : 0.0789
+Run 6
+Global initial seed: 1379492777      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 18.3358134
+Performance in seconds : 0.0838
+Run 7
+Global initial seed: 1647057783      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 19.2059876
+Performance in seconds : 0.0763
+Run 8
+Global initial seed: 3093050370      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 18.4469981
+Performance in seconds : 0.0765
+Run 9
+Global initial seed: 2551052778      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 18.4067635
+Performance in seconds : 0.0833
+Run 10
+Global initial seed: 1638566904      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 19.6909618
+Performance in seconds : 0.0763

@@ -1,42 +1,42 @@
 Begin Computing
 Run 1
-Global initial seed: 2364627977      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 25.1126587
-Performance in seconds : 0.00805
+Global initial seed: 2605421816      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.15996144
+Performance in seconds : 0.0797
 Run 2
-Global initial seed: 1376774588      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 25.0689985
-Performance in seconds : 0.00805
+Global initial seed: 4159391428      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.5136037
+Performance in seconds : 0.0798
 Run 3
-Global initial seed: 3840083879      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 24.2967922
-Performance in seconds : 0.00805
+Global initial seed: 2495403452      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.34780213
+Performance in seconds : 0.0797
 Run 4
-Global initial seed: 1463639067      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 24.0320527
-Performance in seconds : 0.00805
+Global initial seed: 1262725434      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.50772088
+Performance in seconds : 0.0798
 Run 5
-Global initial seed: 3571764494      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 24.1296691
-Performance in seconds : 0.00805
+Global initial seed: 3602979030      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.60526144
+Performance in seconds : 0.0798
 Run 6
-Global initial seed: 1490395362      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 23.9590161
-Performance in seconds : 0.00803
+Global initial seed: 246096315      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.21418966
+Performance in seconds : 0.0798
 Run 7
-Global initial seed: 2942595453      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 25.3572024
-Performance in seconds : 0.00806
+Global initial seed: 2842501689      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.28382335
+Performance in seconds : 0.0799
 Run 8
-Global initial seed: 780813066      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 24.1529228
-Performance in seconds : 0.00806
+Global initial seed: 2655771556      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.19673463
+Performance in seconds : 0.0797
 Run 9
-Global initial seed: 3185158765      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 25.4534221
-Performance in seconds : 0.00803
+Global initial seed: 3598694895      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.4765475
+Performance in seconds : 0.0798
 Run 10
-Global initial seed: 310244218      argv[1]= 100     argv[2]= 1000
-%Average Relative Error: 24.0851001
-Performance in seconds : 0.00805
+Global initial seed: 2854674492      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.30321797
+Performance in seconds : 0.0798
 End Computing

@@ -1,0 +1,42 @@
+Il y a certains calculs qui sont fait à chaque boucle alors qu'il change jamais
+Run 1
+Global initial seed: 1486051206      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.36536264
+Performance in seconds : 0.078
+Run 2
+Global initial seed: 2789239775      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.56302336
+Performance in seconds : 0.0779
+Run 3
+Global initial seed: 1217058950      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.5113865
+Performance in seconds : 0.0779
+Run 4
+Global initial seed: 1526480093      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.31339494
+Performance in seconds : 0.0779
+Run 5
+Global initial seed: 588554516      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.50486406
+Performance in seconds : 0.0779
+Run 6
+Global initial seed: 660602653      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.63163933
+Performance in seconds : 0.078
+Run 7
+Global initial seed: 2580492547      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.24613628
+Performance in seconds : 0.0779
+Run 8
+Global initial seed: 1281275280      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.4116336
+Performance in seconds : 0.078
+Run 9
+Global initial seed: 464361659      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.43800399
+Performance in seconds : 0.0781
+Run 10
+Global initial seed: 1966573273      argv[1]= 1000     argv[2]= 1000
+%Average Relative Error: 7.32886755
+Performance in seconds : 0.078
+End Computing
