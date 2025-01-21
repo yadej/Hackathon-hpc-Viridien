@@ -1,0 +1,32 @@
+Put the desc of what opt you do
+Arm compiler
+Run 1
+Global initial seed: 4079969697      argv[1]= 100     argv[2]= 100000
+ value= 5.978436 in 0.272939 seconds
+Run 2
+Global initial seed: 1610722330      argv[1]= 100     argv[2]= 100000
+ value= 5.978684 in 0.272912 seconds
+Run 3
+Global initial seed: 3111157820      argv[1]= 100     argv[2]= 100000
+ value= 5.987688 in 0.274124 seconds
+Run 4
+Global initial seed: 3863117819      argv[1]= 100     argv[2]= 100000
+ value= 5.972159 in 0.273101 seconds
+Run 5
+Global initial seed: 3839517585      argv[1]= 100     argv[2]= 100000
+ value= 5.982182 in 0.272902 seconds
+Run 6
+Global initial seed: 1747758102      argv[1]= 100     argv[2]= 100000
+ value= 5.982326 in 0.272930 seconds
+Run 7
+Global initial seed: 1346187256      argv[1]= 100     argv[2]= 100000
+ value= 5.977423 in 0.273101 seconds
+Run 8
+Global initial seed: 3076306283      argv[1]= 100     argv[2]= 100000
+ value= 5.981764 in 0.272997 seconds
+Run 9
+Global initial seed: 3749524939      argv[1]= 100     argv[2]= 100000
+ value= 5.978726 in 0.272864 seconds
+Run 10
+Global initial seed: 134474087      argv[1]= 100     argv[2]= 100000
+ value= 5.982352 in 0.272965 seconds
