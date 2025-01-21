@@ -36,10 +36,8 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
+#include <mpi.h>
 
-#include <arm_acle.h>
-#include <cblas.h>
-#include <arm_neon.h>
 #define ui64 u_int64_t
 
 #include <sys/time.h>
@@ -59,41 +57,33 @@ double gaussian_box_muller() {
     return distribution(generator);
 }
 
-#include <cmath> // Pour std::erf et std::sqrt
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
 double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
     double sum_payoffs = 0.0;
-    // Constants
-    float64x2_t S0_vec = vdupq_n_f64(S0);
-    float64x2_t K_vec = vdupq_n_f64(K);
-    float64x2_t r_vec = vdupq_n_f64(r);
-    float64x2_t q_vec = vdupq_n_f64(q);
-    float64x2_t sigma_vec = vdupq_n_f64(sigma);
-    float64x2_t T_vec = vdupq_n_f64(T);
-    for (ui64 i = 0; i < num_simulations; i += 2) {
-        // Generate random numbers (2 per iteration)
-        float64x2_t Z = {gaussian_box_muller(), gaussian_box_muller()};
-        // Stock price at maturity
-        float64x2_t drift = vmulq_f64(vsubq_f64(r_vec, q_vec), T_vec);
-        float64x2_t diffusion = vmulq_f64(vmulq_f64(sigma_vec, vdupq_n_f64(std::sqrt(T))), Z);
-        float64x2_t exponent = vaddq_f64(drift, diffusion);
-        float64x2_t ST = vmulq_f64(S0_vec, float64x2_t{std::exp(vgetq_lane_f64(exponent, 0)), std::exp(vgetq_lane_f64(exponent, 1))});
-        // Payoff calculation
-        float64x2_t payoff = vmaxq_f64(vsubq_f64(ST, K_vec), vdupq_n_f64(0.0));
-        // Sum up payoffs
-        sum_payoffs += vgetq_lane_f64(payoff, 0) + vgetq_lane_f64(payoff, 1);
+    for (ui64 i = 0; i < num_simulations; ++i) {
+        double Z = gaussian_box_muller();
+        double ST = S0 * exp((r - q - 0.5 * sigma * sigma) * T + sigma * sqrt(T) * Z);
+        double payoff = std::max(ST - K, 0.0);
+        sum_payoffs += payoff;
     }
-    return std::exp(-r * T) * (sum_payoffs / num_simulations);
+    return exp(-r * T) * (sum_payoffs / num_simulations);
 }
 
+#include <cmath> // Pour std::erf et std::sqrt
 int main(int argc, char* argv[]) {
+    MPI_Init(&argc, &argv);
+    int rank, size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
     if (argc != 3) {
         std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
+	MPI_Finalize();
         return 1;
     }
 
     ui64 num_simulations = std::stoull(argv[1]);
     ui64 num_runs        = std::stoull(argv[2]);
+    ui64 runs_per_process = num_runs/size;
 
     // Input parameters
     ui64 S0      = 100;                   // Initial stock price
@@ -108,13 +98,17 @@ int main(int argc, char* argv[]) {
     unsigned long long global_seed = rd();  // This will be the global seed
 
     std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
-
-    double sum=0.0;
+    MPI_Barrier(MPI_COMM_WORLD);
+    double local_sum=0.0;
+    double global_sum=0.0;
     double t1=dml_micros();
-    for (ui64 run = 0; run < num_runs; ++run) {
-        sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
+    for (ui64 run = 0; run < runs_per_process; ++run) {
+        local_sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }
+    MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
     double t2=dml_micros();
-    std::cout << std::fixed << std::setprecision(6) << " value= " << sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
+    if( rank == 0)
+    	std::cout << std::fixed << std::setprecision(6) << " value= " << global_sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
     return 0;
 }
