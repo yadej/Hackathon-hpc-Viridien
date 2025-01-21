@@ -76,13 +76,18 @@ int main(int argc, char* argv[]) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
+	if(rank == 0)std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
 	MPI_Finalize();
         return 1;
     }
 
     ui64 num_simulations = std::stoull(argv[1]);
     ui64 num_runs        = std::stoull(argv[2]);
+    if (size == 0) {
+        std::cerr << "Error: MPI size is zero." << std::endl;
+        MPI_Finalize();
+        return 1;
+    }
     ui64 runs_per_process = num_runs/size;
 
     // Input parameters
@@ -96,9 +101,9 @@ int main(int argc, char* argv[]) {
     // Generate a random seed at the start of the program using random_device
     std::random_device rd;
     unsigned long long global_seed = rd();  // This will be the global seed
-
-    std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
-    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0){
+        std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
+    }
     double local_sum=0.0;
     double global_sum=0.0;
     double t1=dml_micros();
@@ -106,9 +111,9 @@ int main(int argc, char* argv[]) {
         local_sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }
     MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
     double t2=dml_micros();
     if( rank == 0)
     	std::cout << std::fixed << std::setprecision(6) << " value= " << global_sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
+    MPI_Finalize(); 
     return 0;
 }
