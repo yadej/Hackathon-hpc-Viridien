@@ -4,12 +4,12 @@ g++ -O -fopenmp BSM.cxx -o BSM
 for i in {1..10};
 do
 	echo "Run $i"
-	./BSM 1000 1000;
+	./BSM 100 100000;
 done
 echo "Arm compiler"
 armclang++ -O -fopenmp BSM.cxx -o BSMarm
 for i in {1..10};
 do
 	echo "Run $i"
-	./BSMarm 1000 1000;
+	./BSMarm 100 100000;
 done

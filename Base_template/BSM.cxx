@@ -28,6 +28,7 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
    You need to tune and parallelize the code to run for large # of simulations
 
 */
+
 #include <iostream>
 #include <cmath>
 #include <random>
@@ -35,7 +36,6 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
-#include <omp.h> // For parallelization
 
 #define ui64 u_int64_t
 
@@ -59,7 +59,6 @@ double gaussian_box_muller() {
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
 double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
     double sum_payoffs = 0.0;
-#pragma omp parallel for reduction(+:sum_payoffs)
     for (ui64 i = 0; i < num_simulations; ++i) {
         double Z = gaussian_box_muller();
         double ST = S0 * exp((r - q - 0.5 * sigma * sigma) * T + sigma * sqrt(T) * Z);

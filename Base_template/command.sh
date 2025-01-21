@@ -1,13 +1,13 @@
-echo "Computing with openmp on the black_sholes function with precompute constant"
+echo "Put the desc of what opt you do"
 echo "gcc compiler"
-g++ -O -fopenmp BSM.cxx -o BSM
+g++ -O BSM.cxx -o BSM
 for i in {1..10};
 do
 	echo "Run $i"
 	./BSM 100 100000;
 done
 echo "Arm compiler"
-armclang++ -O -fopenmp BSM.cxx -o BSMarm
+armclang++ -O BSM.cxx -o BSMarm
 for i in {1..10};
 do
 	echo "Run $i"

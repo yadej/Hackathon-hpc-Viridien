@@ -28,6 +28,7 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
    You need to tune and parallelize the code to run for large # of simulations
 
 */
+
 #include <iostream>
 #include <cmath>
 #include <random>
@@ -35,7 +36,6 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
-#include <omp.h> // For parallelization
 
 #define ui64 u_int64_t
 
@@ -57,16 +57,15 @@ double gaussian_box_muller() {
 }
 
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
-double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
+double black_scholes_monte_carlo(ui64 S0, ui64 K,double drift, double diffusion, double discount_factor, ui64 num_simulations) {
     double sum_payoffs = 0.0;
-#pragma omp parallel for reduction(+:sum_payoffs)
     for (ui64 i = 0; i < num_simulations; ++i) {
         double Z = gaussian_box_muller();
-        double ST = S0 * exp((r - q - 0.5 * sigma * sigma) * T + sigma * sqrt(T) * Z);
+        double ST = S0 * exp( drift + diffusion * Z);
         double payoff = std::max(ST - K, 0.0);
         sum_payoffs += payoff;
     }
-    return exp(-r * T) * (sum_payoffs / num_simulations);
+    return discount_factor * (sum_payoffs / num_simulations);
 }
 
 #include <cmath> // Pour std::erf et std::sqrt
@@ -95,8 +94,12 @@ int main(int argc, char* argv[]) {
 
     double sum=0.0;
     double t1=dml_micros();
+    // We compute those value since they never change between run
+    double drift = (r - q - 0.5 * sigma * sigma) * T;
+    double diffusion = sigma * sqrt(T);
+    double discount_factor = exp(-r * T);
     for (ui64 run = 0; run < num_runs; ++run) {
-        sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
+        sum+= black_scholes_monte_carlo(S0, K, drift, diffusion, discount_factor, num_simulations);
     }
     double t2=dml_micros();
     std::cout << std::fixed << std::setprecision(6) << " value= " << sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;

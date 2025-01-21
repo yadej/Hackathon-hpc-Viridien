@@ -2,49 +2,30 @@
 
     Monte Carlo Hackathon created by Hafsa Demnati and Patrick Demichel @ Viridien 2024
     The code compute a Call Option with a Monte Carlo method and compare the result with the analytical equation of Black-Scholes Merton : more details in the documentation
-
+    
     Compilation : g++ -O BSM.cxx -o BSM
 
     Exemple of run: ./BSM #simulations #runs
 
-    We want to measure 1000 runs and get the average error below a specific level 
-    Adjust the parameter #simulations to achieve the expected Average Relative Error
+    ./BSM 100 1000000
+    Global initial seed: 21852687      argv[1]= 100     argv[2]= 1000000
+    value= 5.136359 in 10.191287 seconds
 
-    points given for achieving Average Relative Error for 1000 runs < Average Relative Error: 0.01%     : short           ~20mn tuned and all cores 
-    points given for achieving Average Relative Error for 1000 runs < Average Relative Error: 0.005%    : normal          ~1h
-    points given for achieving Average Relative Error for 1000 runs < Average Relative Error: 0.002%    : long            ~8h  
-    points given for achieving Average Relative Error for 1000 runs < Average Relative Error: 0.001%    : super long :    ~24h 
+    ./BSM 100 1000000
+Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
+ value= 5.138515 in 10.223189 seconds
 
-    You can observe that from run to run there is a small difference caused using a different seed 
-    Deliver the full logs that show the randomly selected seed ; it will permit us to raproduce and verify the results
+   We want the performance and value for largest # of simulations as it will define a more precise pricing
+   If you run multiple runs you will see that the value fluctuate as expected
+   The large number of runs will generate a more precise value then you will converge but it require a large computation
 
-    You need to run 10 times the program; with the same parameter 1 #simulations and 1000 as parameter 2 
+   give values for ./BSM 100000 1000000        
+               for ./BSM 1000000 1000000
+               for ./BSM 10000000 1000000
+               for ./BSM 100000000 1000000
 
-    The performance is printed in the logs : more points given for each objective to the team with the best performance, the second, third and so on ...
-
-    0.773595%    0.896091%      0.5748%    0.621321%    0.620323%    0.854219%    0.697301%    0.526567%    0.607043%    0.906975% ./BSM 100000    10 
-     0.75403%    0.727078%     0.63101%    0.753609%    0.733543%    0.728597%    0.753131%    0.859521%    0.696769%    0.699988% ./BSM 100000    100
-
-    0.282992%    0.181664%    0.317491%    0.254558%    0.194851%     0.22103%   0.0953011%    0.250809%    0.310949%    0.211331% ./BSM 1000000   10
-    0.224017%    0.230809%    0.239547%    0.217105%    0.258575%      0.1944%    0.228919%    0.258778%    0.235938%     0.25739% ./BSM 1000000   100
-
-    0.056911%   0.0929754%   0.0599475%   0.0681029%   0.0618026%    0.128031%   0.0389641%   0.0588954%   0.0651689%    0.122257% ./BSM 10000000  10
-   0.0625289%   0.0785358%   0.0781138%   0.0781734%   0.0736234%   0.0811247%    0.076021%   0.0773279%   0.0867399%   0.0765197% ./BSM 10000000  100
-
-   0.0200822%   0.0257806%   0.0207118%   0.0179176%   0.0191748%    0.024724%   0.0185942%   0.0138896%    0.027215%   0.0257985% ./BSM 100000000 10
-   0.0227214%   0.0213892%   0.0198618%   0.0229917%   0.0213438%   0.0252195%   0.0235354%    0.022934%   0.0243098%   0.0221371% ./BSM 100000000 100
-
-    As you can see the first parameter define the average precision 
-    The second parameter as an average of multiple runs offer a smaller volativity of the result; that's why we ask for 1000 runs as second parameter "imposed" 
-    You can run smaller values of parameter 2 while you experiment ; but for the final results use strictly 1000 
-
-    The performance is somehow linear with the parameter 1 then multiple actions are expected to achieve all objectives
-    Using the internet of chatgpt you can find and use another random generator; but you need to achieve similar numerical results since we use BSM algorithm to verify we are OK
-    Except if you have a Nobel Price, you cannot change the code not measured by the performance mecanism
-    You can use any method of parallelization or optimization
-    You can use any compiler; vectorization; trigonometric library; we judge only numericla precision and performance 
-
-    Provide the traces of the 10 runs 
+   We give points for best performance for each group of runs 
+   You need to tune and parallelize the code to run for large # of simulations
 
 */
 
