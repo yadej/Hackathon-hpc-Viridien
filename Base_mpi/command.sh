@@ -27,4 +27,4 @@ export PATH=$PATH:/tools/openmpi/4.1.7/acfl/24.04/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openmpi/4.1.7/acfl/24.04/lib
 nodelist=$(scontrol show hostname $SLURM_NODELIST)
 printf "%s\n " "${nodelist[@]}" > output/nodefile
-mpirun --hostfile output/nodefile  ./BSM 100 100000
+mpirun --hostfile output/nodefile  ./BSM 100000 1000000

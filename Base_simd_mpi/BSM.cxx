@@ -70,16 +70,27 @@ double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sig
     float64x2_t q_vec = vdupq_n_f64(q);
     float64x2_t sigma_vec = vdupq_n_f64(sigma);
     float64x2_t T_vec = vdupq_n_f64(T);
+    float64x2_t half= vdupq_n_f64(0.5);
+    // Not affected by the random number
+    float64x2_t drift = vmulq_f64(
+	    vsubq_f64(
+		    vsubq_f64(r_vec, q_vec),
+		    vmulq_f64( half, vmulq_f64(sigma_vec, sigma_vec))
+		    ),
+	    T_vec
+    );
+    float64x2_t sub_diffusion = vmulq_f64(sigma_vec, vdupq_n_f64(sqrt(T)));
+    float64x2_t zero =  vdupq_n_f64(0.0);
     for (ui64 i = 0; i < num_simulations; i += 2) {
         // Generate random numbers (2 per iteration)
         float64x2_t Z = {gaussian_box_muller(), gaussian_box_muller()};
         // Stock price at maturity
-        float64x2_t drift = vmulq_f64(vsubq_f64(r_vec, q_vec), T_vec);
-        float64x2_t diffusion = vmulq_f64(vmulq_f64(sigma_vec, vdupq_n_f64(std::sqrt(T))), Z);
+        float64x2_t diffusion = vmulq_f64(sub_diffusion, Z);
         float64x2_t exponent = vaddq_f64(drift, diffusion);
-        float64x2_t ST = vmulq_f64(S0_vec, float64x2_t{exp(vgetq_lane_f64(exponent, 0)), exp(vgetq_lane_f64(exponent, 1))});
+        float64x2_t ST = vmulq_f64(S0_vec,
+		       	float64x2_t{exp(vgetq_lane_f64(exponent, 0)), exp(vgetq_lane_f64(exponent, 1))});
         // Payoff calculation
-        float64x2_t payoff = vmaxq_f64(vsubq_f64(ST, K_vec), vdupq_n_f64(0.0));
+        float64x2_t payoff = vmaxq_f64(vsubq_f64(ST, K_vec), zero);
         // Sum up payoffs
         sum_payoffs += vgetq_lane_f64(payoff, 0) + vgetq_lane_f64(payoff, 1);
     }
