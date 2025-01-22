@@ -1,11 +1,13 @@
 =========== Job Information ==========
-Node List : c7g-st-c7g-16xlarge-1
-my jobID : 13
- Partition :  c7g
+Node List : c8g-st-c8g-24xlarge-1
+my jobID : 26
+ Partition :  c8g
  submit directory :  /fsx/home/etud14-2/Viridien/Base_mpi
- submit host :  ip-10-0-14-252
+ submit host :  c7g-st-c7g-16xlarge-1
  In the directory :  /fsx/home/etud14-2/Viridien/Base_mpi
 As the user :  etud14-2
 =========== Job Information ==========
-Global initial seed: 4105128631      argv[1]= 100000     argv[2]= 1000000
- value= 5.136906 in 92.411463 seconds
+Global initial seed: 669879761      argv[1]= 100000     argv[2]= 1000000
+ value= 5.136981 in 79.569886 seconds
+Global initial seed: 4139068313      argv[1]= 100000     argv[2]= 1000000
+ value= 5.136970 in 69.745808 seconds
