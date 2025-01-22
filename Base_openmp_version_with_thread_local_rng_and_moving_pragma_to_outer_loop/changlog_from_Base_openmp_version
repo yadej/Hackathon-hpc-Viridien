@@ -1,0 +1,2 @@
+- using thread_local instead of static in the declaration of the rng
+- moving the openmp pragma to the outerloop in the main thread
