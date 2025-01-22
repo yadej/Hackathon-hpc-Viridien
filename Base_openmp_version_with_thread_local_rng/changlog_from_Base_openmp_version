@@ -1,0 +1,1 @@
+- using thread_local instead of static in the declaration of the rng
