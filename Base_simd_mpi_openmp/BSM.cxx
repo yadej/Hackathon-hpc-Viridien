@@ -117,6 +117,8 @@ int main(int argc, char* argv[]) {
         MPI_Finalize();
         return 1;
     }
+    if(rank==0)
+	    std::cout << "Number of process MPI: " << size << "\n";
     ui64 num_sims = num_simulations/size;
     ui64 simulations_per_process = ( rank == size - 1 ) ? num_simulations - num_sims * rank :
 	    num_sims;

@@ -1,0 +1,13 @@
+=========== Job Information ==========
+Node List : c8g-st-c8g-24xlarge-1
+my jobID : 73
+ Partition :  c8g
+ submit directory :  /fsx/home/etud14-2/Viridien/Base_simd_mpi_openmp
+ submit host :  ip-10-0-14-252
+ In the directory :  /fsx/home/etud14-2/Viridien/Base_simd_mpi_openmp
+As the user :  etud14-2
+=========== Job Information ==========
+============  2 Process used  ================= 
+Number of process MPI: 2
+Global initial seed: 2605789414      argv[1]= 10000     argv[2]= 1000000
+ value= 5.136952 in 136.065387 seconds
