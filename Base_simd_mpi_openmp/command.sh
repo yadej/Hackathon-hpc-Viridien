@@ -43,6 +43,6 @@ nodelist=$(scontrol show hostname $SLURM_NODELIST)
 printf "%s\n " "${nodelist[@]}" > output/nodefile
 
 mpirun --hostfile output/nodefile  ./BSMwithopt 100000    1000000
-mpirun --hostfile output/nodefile  ./BSMwithopt 1000000   1000000
-mpirun --hostfile output/nodefile  ./BSMwithopt 10000000  1000000
-mpirun --hostfile output/nodefile  ./BSMwithopt 100000000 1000000
+#mpirun --hostfile output/nodefile  ./BSMwithopt 1000000   1000000
+#mpirun --hostfile output/nodefile  ./BSMwithopt 10000000  1000000
+#mpirun --hostfile output/nodefile  ./BSMwithopt 100000000 1000000
