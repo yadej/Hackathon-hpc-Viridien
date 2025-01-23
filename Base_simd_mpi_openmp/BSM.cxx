@@ -28,6 +28,7 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
    You need to tune and parallelize the code to run for large # of simulations
 
 */
+
 #include <iostream>
 #include <cmath>
 #include <random>
@@ -35,8 +36,12 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
-#include <omp.h> // For parallelization
+#include <mpi.h>
+#include <omp.h>
 
+#include <arm_acle.h>
+#include <cblas.h>
+#include <arm_neon.h>
 #define ui64 u_int64_t
 
 #include <sys/time.h>
@@ -59,25 +64,64 @@ double gaussian_box_muller() {
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
 double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
     double sum_payoffs = 0.0;
-#pragma omp parallel for reduction(+:sum_payoffs) 
-    for (ui64 i = 0; i < num_simulations; ++i) {
-        double Z = gaussian_box_muller();
-        double ST = S0 * exp((r - q - 0.5 * sigma * sigma) * T + sigma * sqrt(T) * Z);
-        double payoff = std::max(ST - K, 0.0);
-        sum_payoffs += payoff;
+    // Constants
+    float64x2_t S0_vec = vdupq_n_f64(S0);
+    float64x2_t K_vec = vdupq_n_f64(K);
+    float64x2_t r_vec = vdupq_n_f64(r);
+    float64x2_t q_vec = vdupq_n_f64(q);
+    float64x2_t sigma_vec = vdupq_n_f64(sigma);
+    float64x2_t T_vec = vdupq_n_f64(T);
+    float64x2_t half= vdupq_n_f64(0.5);
+    // Not affected by the random number
+    float64x2_t drift = vmulq_f64(
+	    vsubq_f64(
+		    vsubq_f64(r_vec, q_vec),
+		    vmulq_f64( half, vmulq_f64(sigma_vec, sigma_vec))
+		    ),
+	    T_vec
+    );
+    float64x2_t sub_diffusion = vmulq_f64(sigma_vec, vdupq_n_f64(sqrt(T)));
+    float64x2_t zero =  vdupq_n_f64(0.0);
+    for (ui64 i = 0; i < num_simulations; i += 2) {
+        // Generate random numbers (2 per iteration)
+        float64x2_t Z = {gaussian_box_muller(), gaussian_box_muller()};
+        // Stock price at maturity
+        float64x2_t diffusion = vmulq_f64(sub_diffusion, Z);
+        float64x2_t exponent = vaddq_f64(drift, diffusion);
+        float64x2_t ST = vmulq_f64(S0_vec,
+		       	float64x2_t{exp(vgetq_lane_f64(exponent, 0)), exp(vgetq_lane_f64(exponent, 1))});
+        // Payoff calculation
+        float64x2_t payoff = vmaxq_f64(vsubq_f64(ST, K_vec), zero);
+        // Sum up payoffs
+        sum_payoffs += vgetq_lane_f64(payoff, 0) + vgetq_lane_f64(payoff, 1);
     }
     return exp(-r * T) * (sum_payoffs / num_simulations);
 }
 
 #include <cmath> // Pour std::erf et std::sqrt
 int main(int argc, char* argv[]) {
+    MPI_Init(&argc, &argv);
+    int rank, size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
     if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
+	if(rank == 0)std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
+	MPI_Finalize();
         return 1;
     }
 
     ui64 num_simulations = std::stoull(argv[1]);
     ui64 num_runs        = std::stoull(argv[2]);
+    if (size == 0) {
+        std::cerr << "Error: MPI size is zero." << std::endl;
+        MPI_Finalize();
+        return 1;
+    }
+    ui64 num_sims = num_simulations/size;
+    ui64 simulations_per_process = ( rank == size - 1 ) ? num_simulations - num_sims * rank :
+	    num_sims;
+    // To ensure at least num_simulations in total
+    // But since we do more
 
     // Input parameters
     ui64 S0      = 100;                   // Initial stock price
@@ -90,15 +134,20 @@ int main(int argc, char* argv[]) {
     // Generate a random seed at the start of the program using random_device
     std::random_device rd;
     unsigned long long global_seed = rd();  // This will be the global seed
-
-    std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
-
-    double sum=0.0;
-    double t1=dml_micros();
-    for (ui64 run = 0; run < num_runs; ++run) {
-        sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
+    if(rank == 0){
+        std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
     }
+    double local_sum=0.0;
+    double global_sum=0.0;
+    double t1=dml_micros();
+    #pragma omp parallel for simd reduction(+:local_sum)
+    for (ui64 run = 0; run < num_runs; ++run) {
+        local_sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, simulations_per_process);
+    }
+    MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     double t2=dml_micros();
-    std::cout << std::fixed << std::setprecision(6) << " value= " << sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
+    if( rank == 0)
+    	std::cout << std::fixed << std::setprecision(6) << " value= " << global_sum/(num_runs * size) << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
+    MPI_Finalize(); 
     return 0;
 }

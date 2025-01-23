@@ -1,6 +1,6 @@
 echo "Default Version"
 echo "gcc compiler"
-g++ -O BSM.cxx -o BSM
+g++ -O -fopt-info-all=opt.txt BSM.cxx -o BSM
 for i in {1..10};
 do
 	echo "Run $i"

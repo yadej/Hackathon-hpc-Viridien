@@ -5,7 +5,7 @@
 #SBATCH --ntasks=96                 # Nombre total de tâches MPI (64 processus)
 #SBATCH --nodes=1                    # Nombre de nœuds (1 nœud)
 #SBATCH --cpus-per-task=1            # Nombre de cœurs par tâche (1 cœur par processus)
-#SBATCH --time=01:00:00              # Temps limite (hh:mm:ss)
+#SBATCH --time=02:00:00              # Temps limite (hh:mm:ss)
 
 echo "=========== Job Information =========="
 echo "Node List : "$SLURM_NODELIST
@@ -25,8 +25,22 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openblas/acfl/24.04/lib
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openblas/gnu/13.2.0/lib
 export PATH=$PATH:/tools/openmpi/4.1.7/acfl/24.04/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openmpi/4.1.7/acfl/24.04/lib
+# Use OpenMPI compiler wrappers
+export CC=$MPI_DIR/bin/mpicc
+export CXX=$MPI_DIR/bin/mpicxx
+export FC=$MPI_DIR/bin/mpif90
+
+# Set base compilers for OpenMPI to use
+export OMPI_CC=/tools/acfl/24.04/gcc-13.2.0_AmazonLinux-2/bin/gcc
+export OMPI_CXX=/tools/acfl/24.04/gcc-13.2.0_AmazonLinux-2/bin/g++
+export OMPI_FC=/tools/acfl/24.04/gcc-13.2.0_AmazonLinux-2/bin/gfortran
+
+# Omp setup
+export OMP_PROC_BIND=true
+export OMP_NUM_THREADS=$(lscpu | grep '^Core(s) per socket:' | awk '{print $4}' | xargs)
+
 nodelist=$(scontrol show hostname $SLURM_NODELIST)
 printf "%s\n " "${nodelist[@]}" > output/nodefile
-mpirun --hostfile output/nodefile  ./BSM 100000 1000000
-mpirun --hostfile output/nodefile  ./BSM 1000000 1000000
-# mpirun --hostfile output/nodefile  ./BSM 10000000 1000000
+# mpirun --hostfile output/nodefile  ./BSM 100000 1000000
+# mpirun --hostfile output/nodefile  ./BSM 100000 1000000
+mpirun --hostfile output/nodefile  ./BSMwithopt 10000000 1000000
