@@ -2,7 +2,7 @@
 #SBATCH --job-name=Base_mpi_mc         # Nom du travail
 #SBATCH --output=output/Base_mpi_job.out         # Fichier de sortie
 #SBATCH --error=output/Base_mpi_job.err          # Fichier d'erreur
-#SBATCH --ntasks=64                  # Nombre total de tâches MPI (64 processus)
+#SBATCH --ntasks=96                  # Nombre total de tâches MPI (64 processus)
 #SBATCH --nodes=1                    # Nombre de nœuds (1 nœud)
 #SBATCH --cpus-per-task=1            # Nombre de cœurs par tâche (1 cœur par processus)
 #SBATCH --time=01:00:00              # Temps limite (hh:mm:ss)
