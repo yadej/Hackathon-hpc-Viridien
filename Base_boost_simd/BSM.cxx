@@ -36,9 +36,9 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <limits>
 #include <algorithm>
 #include <iomanip>   // For setting precision
-#include <mpi.h>
-#include <omp.h>
-
+#include <boost/random.hpp>
+#include <boost/random/normal_distribution.hpp>
+#include <boost/random/random_device.hpp>
 #include <arm_acle.h>
 #include <cblas.h>
 #include <arm_neon.h>
@@ -56,11 +56,12 @@ dml_micros()
 
 // Function to generate Gaussian noise using Box-Muller transform
 double gaussian_box_muller() {
-    static std::mt19937 generator(std::random_device{}());
-    static std::normal_distribution<double> distribution(0.0, 1.0);
+    static boost::random::mt19937 generator(boost::random_device{}());
+    static boost::normal_distribution<double> distribution(0.0, 1.0);
     return distribution(generator);
 }
 
+#include <cmath> // Pour std::erf et std::sqrt
 // Function to calculate the Black-Scholes call option price using Monte Carlo method
 double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sigma, double q, ui64 num_simulations) {
     double sum_payoffs = 0.0;
@@ -98,32 +99,14 @@ double black_scholes_monte_carlo(ui64 S0, ui64 K, double T, double r, double sig
     return exp(-r * T) * (sum_payoffs / num_simulations);
 }
 
-#include <cmath> // Pour std::erf et std::sqrt
 int main(int argc, char* argv[]) {
-    MPI_Init(&argc, &argv);
-    int rank, size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &size);
     if (argc != 3) {
-	if(rank == 0)std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
-	MPI_Finalize();
+        std::cerr << "Usage: " << argv[0] << " <num_simulations> <num_runs>" << std::endl;
         return 1;
     }
 
     ui64 num_simulations = std::stoull(argv[1]);
     ui64 num_runs        = std::stoull(argv[2]);
-    if (size == 0) {
-        std::cerr << "Error: MPI size is zero." << std::endl;
-        MPI_Finalize();
-        return 1;
-    }
-    if(rank==0)
-	    std::cout << "Number of process MPI: " << size << "\n";
-    ui64 num_sims = num_simulations/size;
-    ui64 simulations_per_process = ( rank == size - 1 ) ? num_simulations - num_sims * rank :
-	    num_sims;
-    // To ensure at least num_simulations in total
-    // But since we do more
 
     // Input parameters
     ui64 S0      = 100;                   // Initial stock price
@@ -134,22 +117,17 @@ int main(int argc, char* argv[]) {
     double q     = 0.03;                  // Dividend yield
 
     // Generate a random seed at the start of the program using random_device
-    std::random_device rd;
+    boost::random_device rd;
     unsigned long long global_seed = rd();  // This will be the global seed
-    if(rank == 0){
-        std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
-    }
-    double local_sum=0.0;
-    double global_sum=0.0;
+
+    std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
+
+    double sum=0.0;
     double t1=dml_micros();
-    #pragma omp parallel for reduction(+:local_sum)
     for (ui64 run = 0; run < num_runs; ++run) {
-        local_sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, simulations_per_process);
+        sum+= black_scholes_monte_carlo(S0, K, T, r, sigma, q, num_simulations);
     }
-    MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     double t2=dml_micros();
-    if( rank == 0)
-    	std::cout << std::fixed << std::setprecision(6) << " value= " << global_sum/(num_runs * size) << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
-    MPI_Finalize(); 
+    std::cout << std::fixed << std::setprecision(6) << " value= " << sum/num_runs << " in " << (t2-t1)/1000000.0 << " seconds" << std::endl;
     return 0;
 }

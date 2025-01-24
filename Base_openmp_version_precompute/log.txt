@@ -1,63 +1,63 @@
 Computing with openmp on the black_sholes function with precompute constant
 gcc compiler
 Run 1
-Global initial seed: 839283303      argv[1]= 100     argv[2]= 100000
- value= 5.164537 in 0.559878 seconds
+Global initial seed: 3213807413      argv[1]= 100000     argv[2]= 100
+ value= 5.135816 in 0.518383 seconds
 Run 2
-Global initial seed: 555660077      argv[1]= 100     argv[2]= 100000
- value= 5.175865 in 0.718756 seconds
+Global initial seed: 1472289028      argv[1]= 100000     argv[2]= 100
+ value= 5.142240 in 0.519360 seconds
 Run 3
-Global initial seed: 1031763947      argv[1]= 100     argv[2]= 100000
- value= 5.164642 in 0.571268 seconds
+Global initial seed: 4146727531      argv[1]= 100000     argv[2]= 100
+ value= 5.140144 in 0.519326 seconds
 Run 4
-Global initial seed: 1345270697      argv[1]= 100     argv[2]= 100000
- value= 5.172169 in 0.546179 seconds
+Global initial seed: 887189949      argv[1]= 100000     argv[2]= 100
+ value= 5.139492 in 0.518469 seconds
 Run 5
-Global initial seed: 2146076336      argv[1]= 100     argv[2]= 100000
- value= 5.165846 in 0.568425 seconds
+Global initial seed: 1352002399      argv[1]= 100000     argv[2]= 100
+ value= 5.137421 in 0.517196 seconds
 Run 6
-Global initial seed: 1402773312      argv[1]= 100     argv[2]= 100000
- value= 5.158945 in 0.598241 seconds
+Global initial seed: 3081394353      argv[1]= 100000     argv[2]= 100
+ value= 5.135766 in 0.518638 seconds
 Run 7
-Global initial seed: 2656489912      argv[1]= 100     argv[2]= 100000
- value= 5.173784 in 0.613724 seconds
+Global initial seed: 629076505      argv[1]= 100000     argv[2]= 100
+ value= 5.138294 in 0.520239 seconds
 Run 8
-Global initial seed: 3386044867      argv[1]= 100     argv[2]= 100000
- value= 5.159730 in 0.605302 seconds
+Global initial seed: 1858038480      argv[1]= 100000     argv[2]= 100
+ value= 5.141269 in 0.517981 seconds
 Run 9
-Global initial seed: 1420536441      argv[1]= 100     argv[2]= 100000
- value= 5.174553 in 0.572996 seconds
+Global initial seed: 2388691569      argv[1]= 100000     argv[2]= 100
+ value= 5.135488 in 0.517424 seconds
 Run 10
-Global initial seed: 3774274690      argv[1]= 100     argv[2]= 100000
- value= 5.156627 in 0.601274 seconds
+Global initial seed: 2245882090      argv[1]= 100000     argv[2]= 100
+ value= 5.134901 in 0.519719 seconds
 Arm compiler
 Run 1
-Global initial seed: 1823013861      argv[1]= 100     argv[2]= 100000
- value= 5.125435 in 0.496462 seconds
+Global initial seed: 3595907044      argv[1]= 100000     argv[2]= 100
+ value= 5.139948 in 1.152871 seconds
 Run 2
-Global initial seed: 1938641609      argv[1]= 100     argv[2]= 100000
- value= 5.124514 in 0.481899 seconds
+Global initial seed: 1505526195      argv[1]= 100000     argv[2]= 100
+ value= 5.137115 in 1.154794 seconds
 Run 3
-Global initial seed: 619698752      argv[1]= 100     argv[2]= 100000
- value= 5.121321 in 0.482650 seconds
+Global initial seed: 1514966274      argv[1]= 100000     argv[2]= 100
+ value= 5.141866 in 1.155886 seconds
 Run 4
-Global initial seed: 3835276004      argv[1]= 100     argv[2]= 100000
- value= 5.149198 in 0.506337 seconds
+Global initial seed: 389003577      argv[1]= 100000     argv[2]= 100
+ value= 5.133212 in 1.147846 seconds
 Run 5
-Global initial seed: 3190352457      argv[1]= 100     argv[2]= 100000
- value= 5.136923 in 0.524433 seconds
+Global initial seed: 3808167942      argv[1]= 100000     argv[2]= 100
+ value= 5.141391 in 1.151278 seconds
 Run 6
-Global initial seed: 4103653816      argv[1]= 100     argv[2]= 100000
- value= 5.137014 in 0.500723 seconds
+Global initial seed: 1578117869      argv[1]= 100000     argv[2]= 100
+ value= 5.138962 in 1.150966 seconds
 Run 7
-Global initial seed: 2593546101      argv[1]= 100     argv[2]= 100000
- value= 5.127723 in 0.501671 seconds
+Global initial seed: 1703643159      argv[1]= 100000     argv[2]= 100
+ value= 5.137931 in 1.159786 seconds
 Run 8
-Global initial seed: 2109635250      argv[1]= 100     argv[2]= 100000
- value= 5.138909 in 0.512011 seconds
+Global initial seed: 3557473650      argv[1]= 100000     argv[2]= 100
+ value= 5.136726 in 1.156710 seconds
 Run 9
-Global initial seed: 212988625      argv[1]= 100     argv[2]= 100000
- value= 5.145268 in 0.508836 seconds
+Global initial seed: 719977553      argv[1]= 100000     argv[2]= 100
+ value= 5.133648 in 1.156847 seconds
 Run 10
-Global initial seed: 2958539225      argv[1]= 100     argv[2]= 100000
- value= 5.103147 in 0.499897 seconds
+Global initial seed: 1830217749      argv[1]= 100000     argv[2]= 100
+ value= 5.137406 in 1.150863 seconds

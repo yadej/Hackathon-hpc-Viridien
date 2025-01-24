@@ -25,6 +25,15 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openblas/acfl/24.04/lib
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openblas/gnu/13.2.0/lib
 export PATH=$PATH:/tools/openmpi/4.1.7/acfl/24.04/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/openmpi/4.1.7/acfl/24.04/lib
+
+export CC=$MPI_DIR/bin/mpicc
+export CXX=$MPI_DIR/bin/mpicxx
+export FC=$MPI_DIR/bin/mpif90
+
+# Set base compilers for OpenMPI to use
+export OMPI_CC=/tools/acfl/24.04/arm-linux-compiler-24.04_AmazonLinux-2/bin/armclang
+export OMPI_CXX=/tools/acfl/24.04/arm-linux-compiler-24.04_AmazonLinux-2/bin/armclang++
+export OMPI_FC=/tools/acfl/24.04/arm-linux-compiler-24.04_AmazonLinux-2/bin/armflang
 nodelist=$(scontrol show hostname $SLURM_NODELIST)
 printf "%s\n " "${nodelist[@]}" > output/nodefile
 mpirun --hostfile output/nodefile  ./BSM 100000 1000000

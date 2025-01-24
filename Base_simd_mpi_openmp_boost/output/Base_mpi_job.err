@@ -1,0 +1,17 @@
+[c8g-st-c8g-24xlarge-1:72538] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:72538] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:72538] Signal code: Address not mapped (1)
+[c8g-st-c8g-24xlarge-1:72538] Failing at address: 0xaaaae8671000
+[c8g-st-c8g-24xlarge-1:72538] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xffff8a1bd850]
+[c8g-st-c8g-24xlarge-1:72538] [ 1] ./BSM(+0x2bbc)[0xaaaae8652bbc]
+[c8g-st-c8g-24xlarge-1:72538] [ 2] ./BSM(+0x1e60)[0xaaaae8651e60]
+[c8g-st-c8g-24xlarge-1:72538] [ 3] ./BSM(+0x29f4)[0xaaaae86529f4]
+[c8g-st-c8g-24xlarge-1:72538] [ 4] /tools/acfl/24.04/arm-linux-compiler-24.04_AmazonLinux-2/lib/libomp.so(__kmp_invoke_microtask+0x9c)[0xffff81dc97cc]
+[c8g-st-c8g-24xlarge-1:72538] *** End of error message ***
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 80 with PID 72538 on node c8g-st-c8g-24xlarge-1 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

@@ -39,6 +39,9 @@ Global initial seed: 4208275479      argv[1]= 100     argv[2]= 1000000
 #include <mpi.h>
 #include <omp.h>
 
+#include <boost/random.hpp>
+#include <boost/random/normal_distribution.hpp>
+#include <boost/random/random_device.hpp>
 #include <arm_acle.h>
 #include <cblas.h>
 #include <arm_neon.h>
@@ -56,8 +59,8 @@ dml_micros()
 
 // Function to generate Gaussian noise using Box-Muller transform
 double gaussian_box_muller() {
-    static std::mt19937 generator(std::random_device{}());
-    static std::normal_distribution<double> distribution(0.0, 1.0);
+    static boost::random::mt19937_64 generator(boost::random_device{}());
+    static boost::normal_distribution<double> distribution(0.0, 1.0);
     return distribution(generator);
 }
 
@@ -134,7 +137,7 @@ int main(int argc, char* argv[]) {
     double q     = 0.03;                  // Dividend yield
 
     // Generate a random seed at the start of the program using random_device
-    std::random_device rd;
+    boost::random_device rd;
     unsigned long long global_seed = rd();  // This will be the global seed
     if(rank == 0){
         std::cout << "Global initial seed: " << global_seed << "      argv[1]= " << argv[1] << "     argv[2]= " << argv[2] <<  std::endl;
