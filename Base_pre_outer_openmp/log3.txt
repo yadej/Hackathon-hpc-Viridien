@@ -1,0 +1,25 @@
+Omp for loop in the outer layer for the simulation
+gcc compiler
+Run 1
+Global initial seed: 4127570344      argv[1]= 10000     argv[2]= 100000
+ value= 5.136742 in 50.042184 seconds
+Run 2
+Global initial seed: 1707801313      argv[1]= 10000     argv[2]= 100000
+ value= 5.137129 in 50.039736 seconds
+Run 3
+Global initial seed: 3852663020      argv[1]= 10000     argv[2]= 100000
+ value= 5.136451 in 50.115179 seconds
+Run 4
+Global initial seed: 352178470      argv[1]= 10000     argv[2]= 100000
+ value= 5.136852 in 50.022362 seconds
+Run 5
+Global initial seed: 2922924630      argv[1]= 10000     argv[2]= 100000
+ value= 5.137136 in 50.096219 seconds
+Run 6
+Global initial seed: 4237018640      argv[1]= 10000     argv[2]= 100000
+ value= 5.136961 in 50.004240 seconds
+Run 7
+Global initial seed: 528825649      argv[1]= 10000     argv[2]= 100000
+ value= 5.136834 in 49.995835 seconds
+Run 8
+Global initial seed: 3542475064      argv[1]= 10000     argv[2]= 100000

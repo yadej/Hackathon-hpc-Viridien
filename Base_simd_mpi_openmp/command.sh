@@ -5,7 +5,7 @@
 #SBATCH --ntasks=96                  # Nombre total de tâches MPI (64 processus)
 #SBATCH --nodes=1                    # Nombre de nœuds (1 nœud)
 #SBATCH --cpus-per-task=1            # Nombre de cœurs par tâche (1 cœur par processus)
-#SBATCH --time=10:00:00              # Temps limite (hh:mm:ss)
+#SBATCH --time=11:00:00              # Temps limite (hh:mm:ss)
 
 echo "=========== Job Information =========="
 echo "Node List : "$SLURM_NODELIST
@@ -43,6 +43,6 @@ nodelist=$(scontrol show hostname $SLURM_NODELIST)
 printf "%s\n " "${nodelist[@]}" > output/nodefile
 
 mpirun --hostfile output/nodefile  ./BSMwithopt 100000    1000000
-#mpirun --hostfile output/nodefile  ./BSMwithopt 1000000   1000000
-#mpirun --hostfile output/nodefile  ./BSMwithopt 10000000  1000000
-#mpirun --hostfile output/nodefile  ./BSMwithopt 100000000 1000000
+mpirun --hostfile output/nodefile  ./BSMwithopt 1000000   1000000
+mpirun --hostfile output/nodefile  ./BSMwithopt 10000000  1000000
+mpirun --hostfile output/nodefile  ./BSMwithopt 100000000 1000000
