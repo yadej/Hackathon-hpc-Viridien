@@ -1,11 +1,11 @@
 =========== Job Information ==========
 Node List : c8g-st-c8g-24xlarge-1
-my jobID : 294
+my jobID : 309
  Partition :  c8g
  submit directory :  /fsx/home/etud14-2/Viridien/Base_simd_mpi_unroll_2_thread_local
  submit host :  ip-10-0-14-252
  In the directory :  /fsx/home/etud14-2/Viridien/Base_simd_mpi_unroll_2_thread_local
 As the user :  etud14-2
 =========== Job Information ==========
-Global initial seed: 2652901739      argv[1]= 100000     argv[2]= 1000000
- value= 5.136681 in 26.747142 seconds
+Global initial seed: 412087870      argv[1]= 100000     argv[2]= 1000000
+ value= 5.136630 in 40.468654 seconds

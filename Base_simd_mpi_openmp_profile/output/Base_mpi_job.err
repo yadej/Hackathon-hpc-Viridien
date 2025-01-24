@@ -1,0 +1,305 @@
+Linaro Forge 24.1.1 - Linaro MAP
+
+MAP: Your Linaro MAP licence 18192 is due to expire on Tue Jan 28 2025.
+MAP: Please e-mail sales@forge.linaro.com for renewal options.
+Profiling             : mpirun --hostfile output/nodefile ./BSMwithopt 100000 1000000
+Linaro Forge sampler  : preload (Express Launch)
+MPI implementation    : Auto-Detect (Open MPI)
+* number of processes : 96
+* number of nodes     : 1
+* MPI wrapper         : preload (precompiled openmpi40-gnu-64) (Express Launch)
+
+[c8g-st-c8g-24xlarge-1:87898] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87898] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87898] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87898] Failing at address: 0xffffc9e88c10
+[c8g-st-c8g-24xlarge-1:87875] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87875] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87875] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87875] Failing at address: 0xffffc9e88c10
+[c8g-st-c8g-24xlarge-1:87875] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+[c8g-st-c8g-24xlarge-1:87875] [ 1] [0xffffc9e88c10]
+[c8g-st-c8g-24xlarge-1:87875] *** End of error message ***
+[c8g-st-c8g-24xlarge-1:87898] [ 0] /tools/forge/lib/64/libmap-sampler.so(+0x50910)[0xfffff6e6d910]
+[c8g-st-c8g-24xlarge-1:87898] [ 1] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+[c8g-st-c8g-24xlarge-1:87898] [ 2] [0xffffc9e88c10]
+[c8g-st-c8g-24xlarge-1:87898] *** End of error message ***
+[c8g-st-c8g-24xlarge-1:87874] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87874] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87874] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87874] Failing at address: 0xffffc9e88c10
+[c8g-st-c8g-24xlarge-1:87874] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+[c8g-st-c8g-24xlarge-1:87874] [ 1] [0xffffc9e88c10]
+[c8g-st-c8g-24xlarge-1:87874] *** End of error message ***
+[c8g-st-c8g-24xlarge-1:87849] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87849] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87849] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87849] Failing at address: 0xffffc9e88c10
+[c8g-st-c8g-24xlarge-1:87849] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+[c8g-st-c8g-24xlarge-1:87849] [ 1] [0xffffc9e88c10]
+[c8g-st-c8g-24xlarge-1:87849] *** End of error message ***
+[c8g-st-c8g-24xlarge-1:87918] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87918] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87918] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87918] Failing at address: 0xffffc9e88c10
+[c8g-st-c8g-24xlarge-1:87918] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+[c8g-st-c8g-24xlarge-1:87918] [ 1] [0xffffc9e88c10]
+[c8g-st-c8g-24xlarge-1:87918] *** End of error message ***
+[c8g-st-c8g-24xlarge-1:87900] *** Process received signal ***
+[c8g-st-c8g-24xlarge-1:87900] Signal: Segmentation fault (11)
+[c8g-st-c8g-24xlarge-1:87900] Signal code: Invalid permissions (2)
+[c8g-st-c8g-24xlarge-1:87900] Failing at address: 0xffffc9e88c10
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 63 with PID 87898 on node c8g-st-c8g-24xlarge-1 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+forward map not empty after reset
+MAP: mpirun exited unexpectedly.
+MAP: 
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error ...
+MAP: 
+MAP: Executable: /opt/amazon/openmpi/bin/mpirun
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable kernel activity monitoring - error code 15
+MAP: Linaro Forge sampler: CUPTI failed to enable memcpy activity monitoring - error code 15
+MAP: [c8g-st-c8g-24xlarge-1:87898] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87898] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87898] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87898] Failing at address: 0xffffc9e88c10
+MAP: [c8g-st-c8g-24xlarge-1:87875] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87875] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87875] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87875] Failing at address: 0xffffc9e88c10
+MAP: [c8g-st-c8g-24xlarge-1:87875] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+MAP: [c8g-st-c8g-24xlarge-1:87875] [ 1] [0xffffc9e88c10]
+MAP: [c8g-st-c8g-24xlarge-1:87875] *** End of error message ***
+MAP: [c8g-st-c8g-24xlarge-1:87898] [ 0] /tools/forge/lib/64/libmap-sampler.so(+0x50910)[0xfffff6e6d910]
+MAP: [c8g-st-c8g-24xlarge-1:87898] [ 1] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+MAP: [c8g-st-c8g-24xlarge-1:87898] [ 2] [0xffffc9e88c10]
+MAP: [c8g-st-c8g-24xlarge-1:87898] *** End of error message ***
+MAP: [c8g-st-c8g-24xlarge-1:87874] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87874] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87874] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87874] Failing at address: 0xffffc9e88c10
+MAP: [c8g-st-c8g-24xlarge-1:87874] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+MAP: [c8g-st-c8g-24xlarge-1:87874] [ 1] [0xffffc9e88c10]
+MAP: [c8g-st-c8g-24xlarge-1:87874] *** End of error message ***
+MAP: [c8g-st-c8g-24xlarge-1:87849] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87849] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87849] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87849] Failing at address: 0xffffc9e88c10
+MAP: [c8g-st-c8g-24xlarge-1:87849] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+MAP: [c8g-st-c8g-24xlarge-1:87849] [ 1] [0xffffc9e88c10]
+MAP: [c8g-st-c8g-24xlarge-1:87849] *** End of error message ***
+MAP: [c8g-st-c8g-24xlarge-1:87918] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87918] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87918] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87918] Failing at address: 0xffffc9e88c10
+MAP: [c8g-st-c8g-24xlarge-1:87918] [ 0] linux-vdso.so.1(__kernel_rt_sigreturn+0x0)[0xfffff7ffc850]
+MAP: [c8g-st-c8g-24xlarge-1:87918] [ 1] [0xffffc9e88c10]
+MAP: [c8g-st-c8g-24xlarge-1:87918] *** End of error message ***
+MAP: [c8g-st-c8g-24xlarge-1:87900] *** Process received signal ***
+MAP: [c8g-st-c8g-24xlarge-1:87900] Signal: Segmentation fault (11)
+MAP: [c8g-st-c8g-24xlarge-1:87900] Signal code: Invalid permissions (2)
+MAP: [c8g-st-c8g-24xlarge-1:87900] Failing at address: 0xffffc9e88c10
+MAP: --------------------------------------------------------------------------
+MAP: Primary job  terminated normally, but 1 process returned
+MAP: a non-zero exit code. Per user-direction, the job has been aborted.
+MAP: --------------------------------------------------------------------------
+MAP: --------------------------------------------------------------------------
+MAP: mpirun noticed that process rank 63 with PID 87898 on node c8g-st-c8g-24xlarge-1 exited on signal 11 (Segmentation fault).
+MAP: --------------------------------------------------------------------------
